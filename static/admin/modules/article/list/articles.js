@@ -13,10 +13,22 @@ var ArticlesCtrl = function ($scope, $modal, $http,$location) {
     $scope.add = function() {
         $location.url("/article/add");
     };
-    $http.get("/rest/articles/",{
-        type:"1"
-    }).success(function(data) {
-        $scope.articles = data;
-    });
+    $scope.remove = function(article) {
+        $http.delete("/rest/article/"+article.id).success(function(data) {
+            $.scojs_message('删除成功！', $.scojs_message.TYPE_OK);
+            $scope.articles = [];
+            $scope.load_articles();
+        });
+    };
+    $scope.load_articles = function() {
+        $http.get("/rest/articles?format=json",{
+            type:"2"
+        }).success(function(data) {
+            $scope.articles = data;
+        });
+    };
+
+    $scope.load_articles();
+
 };
 ArticlesCtrl.$inject = ['$scope', '$modal', '$http','$location'];

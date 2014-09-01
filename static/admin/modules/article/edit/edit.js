@@ -1,17 +1,18 @@
 var ArticleEditCtrl = function ($scope, $modal, $http,$location) {
-
+    $scope.id = $location.search().item;
     $scope.view_content = "";
-    $scope.article = {};
     $scope.$watch('article.body',function(data){
-         $scope.view_content = window.marked( $scope.article.body);
+        if($scope.article) {
+            $scope.view_content = window.marked( $scope.article.body);
+        }
     });
-
     $scope.save = function() {
-        $http.put("/rest/article/"+$location.search().item, $scope.article).success(function(data) {
+        $http.put("/rest/article/"+$scope.id , $scope.article).success(function(data) {
             console.log("save success");
+            $.scojs_message('保存成功！', $.scojs_message.TYPE_OK);
         });
     };
-    $http.get("/rest/article/"+$location.search().item).success(function(data) {
+    $http.get("/rest/article/"+$scope.id ).success(function(data) {
         $scope.article = data;
     });
 };

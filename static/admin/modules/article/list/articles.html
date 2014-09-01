@@ -11,7 +11,7 @@
             雜談
         </small>
         <section class="pull-right">
-            <i class="fa fa-plus" title="新增" ng-click="add()"></i>
+            <button class="btn btn-default" ng-click="add()">新增</button>
         </section>
     </h2>
     <div class="section">
@@ -33,9 +33,10 @@
                     <div class="caption">
                         <h3>{{article.title}}</h3>
                         <p>——{{article.timestamp|date}}</p>
-                        <p>
-                            <a ng-click="edit(article)" class="btn btn-primary" role="button">编辑</a>
-                            <a ng-click="view(article)" class="btn btn-primary" role="button">打開</a>
+                        <p class="text-right">
+                            <a ng-click="remove(article)" class="btn btn-link" role="button">删除</a>
+                            <a ng-click="edit(article)" class="btn btn-default" role="button">编辑</a>
+                            <a ng-click="view(article)" class="btn btn-primary" role="button">查看</a>
                         </p>
                     </div>
                 </div>
