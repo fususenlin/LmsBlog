@@ -1,0 +1,48 @@
+[
+    {
+        "name": "表单",
+        "icon": "fa fa-headphones",
+        "subitems": [
+            {
+                "name": "简单表单",
+                "url": "/form/sample"
+            },
+            {
+                "name": "复杂表单",
+                "url": "/form/complex"
+            },
+            {
+                "name": "单列输入域",
+                "url": "/form/input/one"
+            },
+            {
+                "name": "多列输入域",
+                "url": "/form/input/two"
+            },
+            {
+                "name": "搜索域排版",
+                "url": "/form/search"
+            }
+        ]
+    },
+    {
+        "name": "栅格系统",
+        "icon": "fa fa-file-text-o",
+        "url": "/grid"
+    },
+    {
+        "name": "树形控件",
+        "icon": "fa fa-file-text-o",
+        "url": "/ztree"
+    },
+    {
+        "name": "内容区页面标题",
+        "icon": "fa fa-file-text-o",
+        "url": "/content_title"
+    },
+    {
+        "name": "弹出框",
+        "icon": "fa fa-file-text-o",
+        "url": "/dialog"
+    }
+]

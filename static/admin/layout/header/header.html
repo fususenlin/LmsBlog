@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="layout/header/header.css">
+</head>
+<div ng-controller="HeaderCtrl">
+    <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" id="menu-toggler">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" ng-href="">
+            <img src="layout/_r/img/logo.png" alt="logo">
+        </a>
+    </div>
+    <ul class="nav navbar-nav pull-right hidden-xs">
+        <li class="hidden-xs hidden-sm">
+            <input class="search" type="text">
+        </li>
+        <li class="notification-dropdown hidden-xs hidden-sm">
+            <a href="javascript:void(0)" class="trigger">
+                <i class="fa fa-warning"></i>
+                <span class="count">8</span>
+            </a>
+            <div class="pop-dialog">
+                <div class="pointer right">
+                    <div class="arrow"></div>
+                    <div class="arrow_border"></div>
+                </div>
+                <div class="body">
+                    <a href="javascript:void(0)" class="close-icon"><i class="fa fa-times-circle"></i></a>
+                    <div class="notifications">
+                        <h3>You have 6 new notifications</h3>
+                        <a href="javascript:void(0)" class="item">
+                            <i class="fa fa-sign-in"></i> New user registration
+                            <span class="time"><i class="fa fa-clock-o"></i> 13 min.</span>
+                        </a>
+                        <a href="javascript:void(0)" class="item">
+                            <i class="fa fa-sign-in"></i> New user registration
+                            <span class="time"><i class="fa fa-clock-o"></i> 18 min.</span>
+                        </a>
+                        <a href="javascript:void(0)" class="item">
+                            <i class="fa fa-envelope-square"></i> New message from Alejandra
+                            <span class="time"><i class="fa fa-clock-o"></i> 28 min.</span>
+                        </a>
+                        <a href="javascript:void(0)" class="item">
+                            <i class="fa fa-sign-in"></i> New user registration
+                            <span class="time"><i class="fa fa-clock-o"></i> 49 min.</span>
+                        </a>
+                        <a href="javascript:void(0)" class="item">
+                            <i class="fa fa-cloud-download"></i> New order placed
+                            <span class="time"><i class="fa fa-clock-o"></i> 1 day.</span>
+                        </a>
+                        <div class="footer">
+                            <a href="javascript:void(0)" class="logout">View all notifications</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="notification-dropdown hidden-xs hidden-sm">
+            <a href="javascript:void(0)" class="trigger">
+                <i class="fa fa-envelope"></i>
+            </a>
+            <div class="pop-dialog">
+                <div class="pointer right">
+                    <div class="arrow"></div>
+                    <div class="arrow_border"></div>
+                </div>
+                <div class="body">
+                    <a href="javascript:void(0)" class="close-icon"><i class="fa fa-times-circle"></i></a>
+                    <div class="messages">
+                        <a href="javascript:void(0)" class="item">
+                            <img src="img/contact-img.png" tppabs="http://detail.herokuapp.com/img/contact-img.png" class="display" alt="user">
+                            <div class="name">Alejandra Galván</div>
+                            <div class="msg">
+                                There are many variations of available, but the majority have suffered alterations.
+                            </div>
+                            <span class="time"><i class="fa fa-clock-o"></i> 13 min.</span>
+                        </a>
+                        <a href="javascript:void(0)" class="item">
+                            <img src="img/contact-img2.png" tppabs="http://detail.herokuapp.com/img/contact-img2.png" class="display" alt="user">
+                            <div class="name">Alejandra Galván</div>
+                            <div class="msg">
+                                There are many variations of available, have suffered alterations.
+                            </div>
+                            <span class="time"><i class="fa fa-clock-o"></i> 26 min.</span>
+                        </a>
+                        <a href="javascript:void(0)" class="item last">
+                            <img src="img/contact-img.png" tppabs="http://detail.herokuapp.com/img/contact-img.png" class="display" alt="user">
+                            <div class="name">Alejandra Galván</div>
+                            <div class="msg">
+                                There are many variations of available, but the majority have suffered alterations.
+                            </div>
+                            <span class="time"><i class="fa fa-clock-o"></i> 48 min.</span>
+                        </a>
+                        <div class="footer">
+                            <a href="javascript:void(0)" class="logout">View all messages</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="settings hidden-xs hidden-sm" ng-click="logout()">
+            <a role="button">
+                <i class="fa fa-sign-out"></i>
+            </a>
+        </li>
+    </ul>
+
+</div>

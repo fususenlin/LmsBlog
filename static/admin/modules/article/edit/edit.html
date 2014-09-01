@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<div>
+    <h2>文章
+        <small>
+            编辑
+        </small>
+        <section class="pull-right">
+            <i class="fa fa-save" title="保存" ng-click="save()"></i>
+        </section>
+    </h2>
+
+    <div class="section">
+        <div class="row">
+            <div class="col-sm-6 col-md-6 marked-view">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">预览</h3>
+                    </div>
+                    <div class="panel-body" ng-bind-html="view_content"></div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 marked-edit">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">编辑</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">文章标题[必填，12 到 90 字节]</label>
+                                <input type="text" class="form-control"  placeholder="文章标题">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">文章来源[如转载文章，请填完整的原文URL地址]</label>
+                                <input type="text" class="form-control" placeholder="文章来源">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFile">文章内容[使用MarkDown语法，24 到 20480 字节]</label>
+                                <textarea class="form-control" rows="10" ng-model="article.body" placeholder="使用MarkDown语法"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-default" ng-click="save()">保存</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

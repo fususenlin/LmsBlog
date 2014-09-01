@@ -1,0 +1,8 @@
+.login-pc {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+.content-title {
+    margin-left: -1em;
+}

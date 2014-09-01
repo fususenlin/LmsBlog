@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../admin/css/lib/boostrap.alertify.css">
+</head>
+<!-- settings changer -->
+<div class="skins-nav">
+    <a href="#" class="skin first_nav selected">
+        <span class="icon"></span><span class="text">Default skin</span>
+    </a>
+    <a href="#" class="skin second_nav">
+        <span class="icon"></span><span class="text">Dark skin</span>
+    </a>
+</div>
+
+<!-- upper main stats -->
+<div id="main-stats">
+    <div class="row stats-row">
+        <div class="col-md-3 col-sm-3 stat">
+            <div class="data">
+                <span class="number">2457</span>
+                visits
+            </div>
+            <span class="date">Today</span>
+        </div>
+        <div class="col-md-3 col-sm-3 stat">
+            <div class="data">
+                <span class="number">3240</span>
+                users
+            </div>
+            <span class="date">February 2013</span>
+        </div>
+        <div class="col-md-3 col-sm-3 stat">
+            <div class="data">
+                <span class="number">322</span>
+                orders
+            </div>
+            <span class="date">This week</span>
+        </div>
+        <div class="col-md-3 col-sm-3 stat last">
+            <div class="data">
+                <span class="number">$2,340</span>
+                sales
+            </div>
+            <span class="date">last 30 days</span>
+        </div>
+    </div>
+</div>
+<!-- end upper main stats -->
+
+<div id="pad-wrapper">
+
+    <!-- statistics chart built with jQuery Flot -->
+    <div class="row chart">
+        <div class="col-md-12">
+            <h4 class="clearfix pull-left">
+                        Statistics                         
+                    </h4>
+            <div class="btn-group pull-right">
+                <button class="glow left">DAY</button>
+                <button class="glow middle active">MONTH</button>
+                <button class="glow right">YEAR</button>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div id="statsChart" style="padding: 0px; position: relative">
+                <canvas class="flot-base" width="1305" height="250"></canvas>
+                <div class="flot-text flot-y-axis flot-y1-axis yAxis y1Axis">
+                    <div>0</div>
+                    <div>50</div>
+                    <div>100</div>
+                    <div>150</div>
+                </div>
+                <div class="flot-text flot-x-axis flot-x1-axis xAxis x1Axis">
+                    <div>JAN</div>
+                    <div>FEB</div>
+                    <div>MAR</div>
+                    <div>APR</div>
+                    <div>MAY</div>
+                    <div>JUN</div>
+                    <div>JUL</div>
+                    <div>AUG</div>
+                    <div>SEP</div>
+                    <div>OCT</div>
+                    <div>NOV</div>
+                    <div>DEC</div>
+                </div>
+                <canvas class="flot-overlay" width="1305" height="250" style="position: absolute;top: 0px"></canvas>
+                <div class="legend">
+                    <div style="position: absolute"></div>
+                    <table style="position:absolute">
+                        <tbody>
+                            <tr>
+                                <td class="legendColorBox">
+                                    <div>
+                                        <div></div>
+                                    </div>
+                                </td>
+                                <td class="legendLabel">Signups</td>
+                            </tr>
+                            <tr>
+                                <td class="legendColorBox">
+                                    <div>
+                                        <div></div>
+                                    </div>
+                                </td>
+                                <td class="legendLabel">Visits</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end statistics chart -->
+
+    <!-- UI Elements section -->
+    <div class="row section ui-elements">
+        <div class="col-md-12">
+            <h4>UI Elements</h4>
+        </div>
+        <div class="col-md-5 knobs">
+            <div class="knob-wrapper">
+                <input type="text" value="50" class="knob" data-thickness=".3" data-inputcolor="#333" data-fgcolor="#30a1ec" data-bgcolor="#d4ecfd" data-width="150">
+                <div class="info">
+                    <div class="param">
+                        <span class="line blue"></span>
+                        Active users
+                    </div>
+                </div>
+            </div>
+            <div class="knob-wrapper">
+                <input type="text" value="50" class="knob" data-thickness=".3" data-inputcolor="#333" data-fgcolor="#30a1ec" data-bgcolor="#d4ecfd" data-width="150">
+                <div class="info">
+                    <div class="param">
+                        <span class="line blue"></span>
+                        Active users
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 showcase">
+            <div class="ui-sliders">
+                <div class="slider slider-sample1 vertical-handler ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
+                    <a class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a>
+                </div>
+                <div class="slider slider-sample2 ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
+                    <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 25.851703406813627%;"></div>
+                    <a class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a>
+                </div>
+                <div class="slider slider-sample3 ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
+                    <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                    <a class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a>
+                    <a class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a>
+                </div>
+            </div>
+            <div class="ui-group">
+                <a class="btn-flat inverse">Large Button</a>
+                <a class="btn-flat gray">Large Button</a>
+                <a class="btn-flat default">Large Button</a>
+                <a class="btn-flat primary">Large Button</a>
+            </div>
+
+            <div class="ui-group">
+                <a class="btn-flat icon">
+                    <i class="tool"></i> Icon button
+                </a>
+                <a class="btn-glow small inverse">
+                    <i class="shuffle"></i>
+                </a>
+                <a class="btn-glow small primary">
+                    <i class="setting"></i>
+                </a>
+                <a class="btn-glow small default">
+                    <i class="attach"></i>
+                </a>
+                <div class="ui-select">
+                    <select>
+                        <option selected="">Dropdown</option>
+                        <option>Custom selects</option>
+                        <option>Pure css styles</option>
+                    </select>
+                </div>
+
+                <div class="btn-group">
+                    <button class="glow left">LEFT</button>
+                    <button class="glow right">RIGHT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end UI elements section -->
+
+    <!-- table sample -->
+    <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
+    <div class="table-products section">
+        <div class="row head">
+            <div class="col-md-12">
+                <h4>Products <small>Table sample</small></h4>
+            </div>
+        </div>
+
+        <div class="row filter-block">
+            <div class="col-md-8 col-md-offset-5">
+                <div class="ui-select">
+                    <select>
+                        <option>Filter users</option>
+                        <option>Signed last 30 days</option>
+                        <option>Active users</option>
+                    </select>
+                </div>
+                <input type="text" class="search">
+                <a class="btn-flat new-product">+ Add product</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="col-md-3">
+                            <input type="checkbox">Product
+                        </th>
+                        <th class="col-md-3">
+                            <span class="line"></span>Description
+                        </th>
+                        <th class="col-md-3">
+                            <span class="line"></span>Status
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- row -->
+                    <tr class="first">
+                        <td>
+                            <input type="checkbox">
+                            <div class="img">
+                                <img src="img/table-img.png" alt="pic">
+                            </div>
+                            <a href="#">There are many variations </a>
+                        </td>
+                        <td class="description">
+                            if you are going to use a passage of Lorem Ipsum.
+                        </td>
+                        <td>
+                            <span class="label label-success">Active</span>
+                            <ul class="actions">
+                                <li><i class="table-edit"></i>
+                                </li>
+                                <li><i class="table-settings"></i>
+                                </li>
+                                <li class="last"><i class="table-delete"></i>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!-- row -->
+                    <tr>
+                        <td>
+                            <input type="checkbox">
+                            <div class="img">
+                                <img src="img/table-img.png" alt="pic">
+                            </div>
+                            <a href="#">Internet tend</a>
+                        </td>
+                        <td class="description">
+                            There are many variations of passages.
+                        </td>
+                        <td>
+                            <ul class="actions">
+                                <li><i class="table-edit"></i>
+                                </li>
+                                <li><i class="table-settings"></i>
+                                </li>
+                                <li class="last"><i class="table-delete"></i>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!-- row -->
+                    <tr>
+                        <td>
+                            <input type="checkbox">
+                            <div class="img">
+                                <img src="img/table-img.png" alt="pic">
+                            </div>
+                            <a href="#">Many desktop publishing </a>
+                        </td>
+                        <td class="description">
+                            if you are going to use a passage of Lorem Ipsum.
+                        </td>
+                        <td>
+                            <ul class="actions">
+                                <li><i class="table-edit"></i>
+                                </li>
+                                <li><i class="table-settings"></i>
+                                </li>
+                                <li class="last"><i class="table-delete"></i>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!-- row -->
+                    <tr>
+                        <td>
+                            <input type="checkbox">
+                            <div class="img">
+                                <img src="img/table-img.png" alt="pic">
+                            </div>
+                            <a href="#">Generate Lorem </a>
+                        </td>
+                        <td class="description">
+                            There are many variations of passages.
+                        </td>
+                        <td>
+                            <span class="label label-info">Standby</span>
+                            <ul class="actions">
+                                <li><i class="table-edit"></i>
+                                </li>
+                                <li><i class="table-settings"></i>
+                                </li>
+                                <li class="last"><i class="table-delete"></i>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!-- row -->
+                    <tr>
+                        <td>
+                            <input type="checkbox">
+                            <div class="img">
+                                <img src="img/table-img.png" alt="pic">
+                            </div>
+                            <a href="#">Internet tend</a>
+                        </td>
+                        <td class="description">
+                            There are many variations of passages.
+                        </td>
+                        <td>
+                            <ul class="actions">
+                                <li><i class="table-edit"></i>
+                                </li>
+                                <li><i class="table-settings"></i>
+                                </li>
+                                <li class="last"><i class="table-delete"></i>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ul class="pagination">
+            <li><a href="#">«</a>
+            </li>
+            <li class="active"><a href="#">1</a>
+            </li>
+            <li><a href="#">2</a>
+            </li>
+            <li><a href="#">3</a>
+            </li>
+            <li><a href="#">4</a>
+            </li>
+            <li><a href="#">»</a>
+            </li>
+        </ul>
+    </div>
+    <!-- end table sample -->
+
+    <div id="tree" class="section"></div>
+    <!-- Button to trigger modal http://www.bootcss.com/p/sco.js/#modals-->
+    <a data-trigger="modal" href="modules/template/modal.html" data-title="Modal title" class="btn">加载一个弹窗框</a>
+
+    <a data-trigger="confirm" href="/delete/me" data-title="删除确认" data-content="你确定要删除这个动态？" class="btn">删除一个动态</a>
+    <button class="btn btn-success" ng-click="message_show()">点击弹出信息框</button>
+    <div class="section">
+
+        <h1 class="text-center text-danger">Form 示例</h1> 
+        <form role="form" class="form-horizontal" action="javascript:alert('验证成功,可以提交.');" method="post">
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="name">Name</label>
+                <div class="col-md-10">
+                    <input class="form-control" name="name" type="text" id="name" placeholder="Name" value="" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="exampleInputPassword1">Password</label>
+                <div class="col-md-10">
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="intro" class="control-label col-md-2">Intro</label>
+                <div class="col-md-10">
+                    <textarea id="intro" class="form-control" rows="3" name="intro" placeholder="Intro"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Gender</label>
+                <div class="col-md-10">
+                    <label class="radio-inline">
+                        <input type="radio" name="gender" value="男" />boy</label>
+
+                    <label class="radio-inline">
+                        <input type="radio" name="gender" value="女" />gril</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="hobby" class="control-label col-md-2">Hobby</label>
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="hobby" value="Music">Music
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="hobby" id="" value="Game" />Game</label>
+                    </div>
+
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox1" value="option1">option1</label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox2" value="option2">option3
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox3" value="option3">option3</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="sel" class="control-label col-md-2">Select</label>
+                <div class="col-md-10">
+                    <select multiple="" id="sel" name="sel" class="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- -->
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        Submit
+                    </button>
+                    <button type="reset" class="btn btn-primary btn-sm">
+                        Reset
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="section">
+
+        <label>
+            <div class="icheckbox disabled">
+                <input type="checkbox" name="quux[1]" disabled>
+            </div>
+            Foo
+        </label>
+
+        <label for="baz[1]">Bar</label>
+        <div class="iradio checked">
+            <input type="radio" name="quux[2]" id="baz[1]" checked>
+        </div>
+
+        <label for="baz[2]">Bar</label>
+        <div class="iradio">
+            <input type="radio" name="quux[2]" id="baz[2]">
+        </div>
+    </div>
+</div>
+
+</html>

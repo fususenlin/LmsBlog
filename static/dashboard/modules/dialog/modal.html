@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">检索地图</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" role="form">
+            <div class="grid-wrapper">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control input-lg" placeholder="输入收货地址">
+                            </div>
+                            <button type="button" class="btn btn-success btn-lg col-sm-3">搜索</button>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="well well-sm">
+                                    <div id="allmap" style="height:500px"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="ok()">关闭</button>
+    </div>
+</div>
+
+</html>
