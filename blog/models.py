@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib import admin
 from django.conf.urls import url, include
+from django.contrib import auth
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
 from rest_framework import generics
@@ -8,6 +9,14 @@ from rest_framework.permissions import IsAdminUser
 from rest_any_permissions.permissions import AnyPermissions
 from rest_any_permissions import permissions
 from rest_framework.permissions import BasePermission
+
+class SessionPermission(BasePermission):
+
+    def has_permission(self, request, view):
+        user = auth.get_user(request)
+        if user.username is not None:
+            return True
+        return False
 
 # Create your models here.
 class Article(models.Model):
@@ -44,6 +53,7 @@ class ArticlesViewSet(viewsets.ModelViewSet):
     """
     A simple ViewSet for viewing and editing accounts.
     """
+    permission_classes = [SessionPermission]
     queryset = Article.objects.all()
     serializer_class = ArticlesSerializer
 
@@ -52,16 +62,12 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
         model = Article
         fields = ('title', 'body', 'timestamp', 'id', 'type')
 
-class TruePermission(BasePermission):
 
-    def has_permission(self, request, view):
-        return True
 
 class ArticleViewSet(viewsets.ModelViewSet):
     """
     A simple ViewSet for viewing and editing accounts.
     """
-    permission_classes = [AnyPermissions]
-    any_permission_classes = [TruePermission]
+    permission_classes = [SessionPermission]
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer

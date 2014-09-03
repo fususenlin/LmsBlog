@@ -7,7 +7,7 @@ from rest_framework import routers, serializers, viewsets
 from blog import models
 from blog import views
 from conf import settings
-
+from ajax_auth import urls
 from django.contrib.auth.models import User
 from rest_framework import generics
 admin.autodiscover()
@@ -26,6 +26,7 @@ urlpatterns = patterns('',
     (r'^$', views.index),
     (r'^time/$', views.current_datetime),
     url(r'^rest/', include(router.urls)),
+    url(r'^auth/', include('ajax_auth.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATICFILES_DIRS,}),

@@ -8,6 +8,9 @@
 <div>
     <h2>{{ article.title}}
         <small ng-bind="article.timestamp|date"></small>
+        <section class="pull-right">
+            <button class="btn btn-default" ng-click="remove()">删除</button>
+        </section>
     </h2>
     <div class="section">
         <div ng-hide="article">

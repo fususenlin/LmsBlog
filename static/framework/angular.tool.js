@@ -117,3 +117,12 @@ var system = {
     clientHeight: document.body.clientHeight,
     os: navigator.userAgent.split(";")[0].split('(')[1]
 }
+
+if($.scojs_message && bootbox) {
+    bootbox.message = function(msg) {
+        $.scojs_message(msg, $.scojs_message.TYPE_OK);
+    },
+    bootbox.error = function(msg) {
+        $.scojs_message(msg, $.scojs_message.TYPE_ERROR);
+    }
+}

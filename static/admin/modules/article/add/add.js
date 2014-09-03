@@ -3,7 +3,8 @@ var ArticleAddCtrl = function ($scope, $modal, $http,$location) {
     $scope.article = {
         title:"dqwdwq",
         body:"dwqd22222",
-        type:"2"
+        type:"1",
+        timestamp:new Date()
     };
 
     $scope.$watch('article.body',function(data){
@@ -11,11 +12,9 @@ var ArticleAddCtrl = function ($scope, $modal, $http,$location) {
     });
 
     $scope.save = function() {
-        $scope.article.timestamp = new Date().toJSON();
-        $http.post("/rest/article/?format=json", $scope.article).success(function(data) {
+        $http.post("/rest/article", $scope.article).success(function(data) {
             $location.url("articles");
-            $.scojs_message('添加成功！', $.scojs_message.TYPE_OK);
-        });
+         });
     };
 
 };

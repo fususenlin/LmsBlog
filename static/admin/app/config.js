@@ -35,12 +35,23 @@ angular.module('admin.config', [])
         $httpProvider.responseInterceptors.push(function ($q) {
             return function (promise) {
                 return promise.then(function (response) {
-                    if (null != response.data.errorMessage) {
+                    if (response.data && null != response.data.error_msg) {
                         return $q.reject(response);
                     }
                     return response;
                 });
             };
+        });
+        $httpProvider.defaults.transformResponse.push(function(data,header,status) {
+            if(data.error_msg) {
+                bootbox.error(data.error_msg);
+                return data;
+            }
+            if(data.detail) {
+                bootbox.error(data.detail);
+                return data;
+            }
+            return data;
         });
         $httpProvider.defaults.transformRequest = function (data) {
             /**
