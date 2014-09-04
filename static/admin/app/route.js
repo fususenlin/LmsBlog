@@ -1,3 +1,7 @@
+$routeProvider.when("/login", {
+    resource: 'login/login',
+    controller: 'LoginPreCtrl'
+});
 $routeProvider.when("/articles", {
     resource: 'article/list/articles',
     controller: 'ArticlesCtrl'

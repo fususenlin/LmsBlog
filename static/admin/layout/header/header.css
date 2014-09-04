@@ -12,8 +12,12 @@
     background: #fff;
 }
 .navbar-brand img {
-    height: 40px;
+    height: 60px;
 }
+.navbar-brand .logo02 {
+    height: 45px;
+}
+
 .logo-title {
     color: #333;
     padding-left: 13px;

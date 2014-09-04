@@ -1,4 +1,4 @@
-var ArticlesCtrl = function ($scope, $modal, $http,$location) {
+var ArticlesCtrl = function ($rootScope, $scope, $modal, $http,$location) {
     $scope.confirm = function () {
         bootbox.confirm("Are you sure?", function (result) {
             bootbox.alert("Confirm result: " + result);
@@ -13,10 +13,14 @@ var ArticlesCtrl = function ($scope, $modal, $http,$location) {
     $scope.add = function() {
         $location.url("/article/add");
     };
-    $http.get("/rest/articles/",{
-        type:"1"
-    }).success(function(data) {
-        $scope.articles = data;
-    });
+    $scope.$watch($rootScope.need_login,function(){
+        if($rootScope.need_login == "admin") {
+            $http.get("/rest/articles/",{
+            type:"1"
+        }).success(function(data) {
+            $scope.articles = data;
+        });
+        }
+    })
 };
-ArticlesCtrl.$inject = ['$scope', '$modal', '$http','$location'];
+ArticlesCtrl.$inject = ['$rootScope', '$scope', '$modal', '$http','$location'];

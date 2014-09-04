@@ -14,7 +14,7 @@ class SessionPermission(BasePermission):
 
     def has_permission(self, request, view):
         user = auth.get_user(request)
-        if user.username is not None:
+        if user.username is not "":
             return True
         return False
 

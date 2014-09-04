@@ -45,8 +45,7 @@ var HeaderCtrl = function ($scope, $routeParams, $rootScope, $location, $http) {
         $http.post("/auth/logout/", $scope.user)
             .success(function(data) {
                 console.log(data);
-                //$rootScope.need_login = "login";
-                //localStorage.setItem("need_login", "login");
+                $location.path("/login");
             });
 
     };

@@ -1,4 +1,4 @@
-var LoginCtrl = function ($scope, $http, $routeParams, $rootScope) {
+var LoginCtrl = function ($scope, $http, $routeParams, $rootScope,$location) {
     $scope.user = {
         username: "root",
         password: "lms"
@@ -10,9 +10,10 @@ var LoginCtrl = function ($scope, $http, $routeParams, $rootScope) {
             .success(function(data) {
                 console.log(data);
                 $rootScope.need_login = "admin";
-                localStorage.setItem("need_login", "admin");
+                localStorage.setItem("need_login","admin");
+                refreshCookie();
+                $location.path("/articles");
             });
-
     };
 };
-LoginCtrl.$inject = ['$scope', '$http', '$routeParams', '$rootScope'];
+LoginCtrl.$inject = ['$scope', '$http', '$routeParams', '$rootScope','$location'];

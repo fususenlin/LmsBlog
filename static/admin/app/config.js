@@ -1,4 +1,5 @@
 // using jQuery
+var csrftoken = getCookie('csrftoken');
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {
@@ -14,7 +15,9 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-var csrftoken = getCookie('csrftoken');
+function refreshCookie(){
+    csrftoken = getCookie('csrftoken');
+}
 
 function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
@@ -53,15 +56,15 @@ angular.module('admin.config', [])
             }
             return data;
         });
-        $httpProvider.defaults.transformRequest = function (data) {
+        $httpProvider.defaults.transformRequest = function (data,headers) {
             /**
              * The workhorse; converts an object to x-www-form-urlencoded serialization.
              * @param {Object} obj
              * @return {String}
              */
+            headers()['X-CSRFToken'] = csrftoken;
             return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
         };
-        $httpProvider.defaults.headers.common['X-CSRFToken'] = csrftoken;
         $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
 
