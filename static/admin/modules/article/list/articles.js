@@ -5,21 +5,31 @@ var ArticlesCtrl = function ($rootScope, $scope, $modal, $http,$location) {
         });
     };
     $scope.view = function(article) {
-        $location.url("/article?item="+article.id);
+        $location.url("/article?id="+article.id);
     };
     $scope.edit = function(article) {
-        $location.url("/article/edit?item="+article.id);
+        $location.url("/article/edit?id="+article.id);
     };
     $scope.add = function() {
         $location.url("/article/add");
     };
+    $scope.remove = function(article) {
+        $http.delete("/rest/article/"+article.id).success(function(data) {
+            $location.url("articles");
+            bootbox.message("删除成功");
+            $scope.refreshArticles();
+        });
+    };
+    $scope.refreshArticles = function() {
+        $http.get("/rest/articles/",{
+                type:"1"
+            }).success(function(data) {
+                $scope.articles = data;
+            });
+    }
     $scope.$watch($rootScope.need_login,function(){
         if($rootScope.need_login == "admin") {
-            $http.get("/rest/articles/",{
-            type:"1"
-        }).success(function(data) {
-            $scope.articles = data;
-        });
+            $scope.refreshArticles();
         }
     })
 };
