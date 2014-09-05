@@ -1,8 +1,24 @@
-/**
- * Created by Motion on 2014/9/4 0004.
- */
-var LoginPreCtrl = function ($rootScope, $scope, $http, $location) {
+var LoginCtrl = function ($scope, $http, $timeout, $rootScope,$location) {
+    $scope.user = {
+        username: "root",
+        password: "lms"
+    };
+
     $rootScope.need_login = "login";
-    localStorage.setItem("need_login", "login");
+    localStorage.setItem("need_login","login");
+
+    $scope.login = function () {
+        $http.post("/auth/login/", $scope.user)
+            .success(function(data) {
+                console.log(data);
+                $rootScope.need_login = "admin";
+                localStorage.setItem("need_login","admin");
+                refreshCookie();
+                $timeout(function(){
+                    $location.path("/articles");
+                },1500);
+
+            });
+    };
 };
-LoginPreCtrl.$inject = ['$rootScope','$scope',  '$http','$location'];
+LoginCtrl.$inject = ['$scope', '$http', '$timeout', '$rootScope','$location'];

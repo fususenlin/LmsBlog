@@ -1,6 +1,6 @@
 $routeProvider.when("/login", {
     resource: 'login/login',
-    controller: 'LoginPreCtrl'
+    controller: 'LoginCtrl'
 });
 $routeProvider.when("/articles", {
     resource: 'article/list/articles',

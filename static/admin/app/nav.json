@@ -3,24 +3,5 @@
         "name": "極客雜談",
         "icon": "fa fa-home",
         "url": "/articles"
-    },
-    {
-        "name": "時光筆記",
-        "icon": "fa fa-clock-o",
-        "subitems": [
-            {
-                "name": "回憶錄",
-                "url": "/time/memo"
-            },
-            {
-                "name": "暢想",
-                "url": "/time/future"
-            }
-        ]
-    },
-    {
-        "name": "讀書筆記",
-        "icon": "fa fa-bookmark",
-        "url": "/books"
     }
 ]

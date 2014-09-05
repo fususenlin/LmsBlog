@@ -28,10 +28,6 @@ var ArticlesCtrl = function ($rootScope, $scope, $modal, $http,$location) {
                 $scope.articles = data;
             });
     }
-    $scope.$watch($rootScope.need_login,function(){
-        if($rootScope.need_login == "admin") {
-            $scope.refreshArticles();
-        }
-    })
+    $scope.refreshArticles();
 };
 ArticlesCtrl.$inject = ['$rootScope', '$scope', '$modal', '$http','$location'];

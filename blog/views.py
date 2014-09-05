@@ -6,9 +6,15 @@ import datetime
 from django.template import loader, Context
 from django.http import HttpResponse
 
-def index(request):
+def admin(request):
     #posts = BlogPost.objects.all()
-    t = loader.get_template("index.html")
+    t = loader.get_template("admin.html")
+    c = Context()
+    return HttpResponse(t.render(c))
+
+def blog(request):
+    #posts = BlogPost.objects.all()
+    t = loader.get_template("blog.html")
     c = Context()
     return HttpResponse(t.render(c))
 
