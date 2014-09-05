@@ -1,7 +1,7 @@
 var LoginCtrl = function ($scope, $http, $timeout, $rootScope,$location) {
     $scope.user = {
-        username: "root",
-        password: "lms"
+        username: "",
+        password: ""
     };
 
     $rootScope.need_login = "login";
