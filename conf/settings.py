@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['limaoshengcpp.cn', 'localhost']
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -40,7 +40,7 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny'
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly'
     ]
 }
 MIDDLEWARE_CLASSES = (
@@ -113,12 +113,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATICFILES_DIRS = (
-    os.path.join(os.path.dirname(__file__), '../static/').replace('\\','/'),
+    'static/',
 )
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates/'),

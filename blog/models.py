@@ -48,7 +48,6 @@ class ArticlesViewSet(viewsets.ModelViewSet):
     """
     A simple ViewSet for viewing and editing accounts.
     """
-    permission_classes = [SessionPermission]
     queryset = Article.objects.all()
     serializer_class = ArticlesSerializer
 
@@ -63,6 +62,5 @@ class ArticleViewSet(viewsets.ModelViewSet):
     """
     A simple ViewSet for viewing and editing accounts.
     """
-    permission_classes = [SessionPermission]
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
