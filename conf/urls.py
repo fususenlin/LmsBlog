@@ -23,13 +23,13 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'LmsBlog.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    (r'^admin/$', views.admin),
+    (r'^backend/$', views.admin),
     (r'^$', views.blog),
     (r'^time/$', views.current_datetime),
     url(r'^rest/', include(router.urls)),
     url(r'^auth/', include('ajax_auth.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^admin_old/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 )
 
 if settings.DEBUG is False:
