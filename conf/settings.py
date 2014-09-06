@@ -115,11 +115,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-STATICFILES_DIRS = (
-    'static/',
-)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+if DEBUG is True:
+    STATICFILES_DIRS = (
+        os.path.join(os.path.dirname(__file__), '../static/').replace('\\','/'),
+    )
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR,  'templates/'),
+     os.path.join(BASE_DIR,  'templates'),
 )
 
