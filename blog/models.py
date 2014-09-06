@@ -1,13 +1,8 @@
 from django.db import models
 from django.contrib import admin
-from django.conf.urls import url, include
 from django.contrib import auth
 from django.contrib.auth.models import User
-from rest_framework import routers, serializers, viewsets
-from rest_framework import generics
-from rest_framework.permissions import IsAdminUser
-from rest_any_permissions.permissions import AnyPermissions
-from rest_any_permissions import permissions
+from rest_framework import serializers, viewsets
 from rest_framework.permissions import BasePermission
 
 class SessionPermission(BasePermission):
