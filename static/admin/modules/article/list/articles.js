@@ -1,4 +1,8 @@
 var ArticlesCtrl = function ($rootScope, $scope, $modal, $http,$location) {
+
+    if($rootScope.need_login == "login"){
+        $location.path("/login");
+    }
     $scope.confirm = function () {
         bootbox.confirm("Are you sure?", function (result) {
             bootbox.alert("Confirm result: " + result);
