@@ -30,5 +30,11 @@ urlpatterns = patterns('',
     url(r'^auth/', include('ajax_auth.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin_old/', include(admin.site.urls)),
-    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATICFILES_DIRS,}),
 )
+
+if settings.DEBUG is False:
+    urlpatterns += \
+        patterns('',
+                 url(r'^static/(?P<path>.*)$',
+                     'django.views.static.serve',
+                     {'document_root': settings.STATIC_ROOT, }),)
