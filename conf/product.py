@@ -115,7 +115,7 @@ USE_TZ = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-STATIC_URL = os.path.join(BASE_DIR, 'static/').replace('\\', '/')
+STATIC_URL = "/static/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/').replace('\\', '/')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/').replace('\\', '/')
 #STATICFILES_DIRS = (
