@@ -12,6 +12,13 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+import socket
+
+if socket.gethostname() == 'limaoshengcpp.cn':
+    DEBUG = TEMPLATE_DEBUG = True
+else:
+    DEBUG = TEMPLATE_DEBUG = False
+
 ADMINS = (
     ('Li Maosheng', 'limaoshengcpp@163.com'),
 )
@@ -112,9 +119,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = DEBUG
 
 STATIC_URL = os.path.join(BASE_DIR, 'static/').replace('\\', '/')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/').replace('\\', '/')
