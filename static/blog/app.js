@@ -2,9 +2,6 @@ angular.module('blog', [
        'ngRoute',
        'ngResource',
        'ngSanitize',
-       'ngTouch',
-       'ngAnimate',
-       'ui.bootstrap',
        'frame.$directive',
 
        'admin.config',

@@ -1,4 +1,4 @@
-var ArticleCtrl = function ($scope, $modal, $http, $location) {
+var ArticleCtrl = function ($scope, $http, $location) {
     $scope.id = $location.search().id;
 
     $scope.confirm = function () {
@@ -15,4 +15,4 @@ var ArticleCtrl = function ($scope, $modal, $http, $location) {
     }
 
 };
-ArticleCtrl.$inject = ['$scope', '$modal', '$http','$location'];
+ArticleCtrl.$inject = ['$scope', '$http','$location'];

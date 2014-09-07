@@ -1,4 +1,4 @@
-var ArticlesCtrl = function ($rootScope, $scope, $modal, $http,$location) {
+var ArticlesCtrl = function ($rootScope, $scope, $http,$location) {
     $scope.confirm = function () {
         bootbox.confirm("Are you sure?", function (result) {
             bootbox.alert("Confirm result: " + result);
@@ -30,4 +30,4 @@ var ArticlesCtrl = function ($rootScope, $scope, $modal, $http,$location) {
     }
     $scope.refreshArticles();
 };
-ArticlesCtrl.$inject = ['$rootScope', '$scope', '$modal', '$http','$location'];
+ArticlesCtrl.$inject = ['$rootScope', '$scope', '$http','$location'];
