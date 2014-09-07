@@ -112,16 +112,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = DEBUG
 
 STATIC_URL = os.path.join(BASE_DIR, 'static/').replace('\\', '/')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/').replace('\\', '/')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/').replace('\\', '/')
-#STATICFILES_DIRS = (
-#        os.path.join(os.path.dirname(__file__), '../static/').replace('\\', '/'),
-#)
+
 TEMPLATE_DIRS = (
      os.path.join(BASE_DIR,  'templates/'),
 )
