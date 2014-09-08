@@ -1,7 +1,6 @@
 /* Some overrides from default bootstrap styles */
 
 body {
-    min-width: 1200px;
     background: #e7e8eb;
 }
 .container {
@@ -21,6 +20,9 @@ h5,
 h6 {
     font-weight: normal;
     font-family: '微软雅黑', 'Helvetica Neue', sans-serif, SimHei;
+}
+b, strong {
+    word-break: break-all;
 }
 /* COMPONENTS */
 

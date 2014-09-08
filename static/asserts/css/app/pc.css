@@ -92,3 +92,8 @@
     -o-animation-delay: -0.16s;
     animation-delay: -0.16s
 }
+.view-header {
+    border-bottom: 4px solid #3e3e3e;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
