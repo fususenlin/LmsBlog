@@ -10,7 +10,7 @@ body {
     padding: 60px 10px 0 10px;
 }
 .container_box {
-    background-color: #fff;
+    /*background-color: #fff;*/
 }
 h1,
 h2,
@@ -71,7 +71,7 @@ input.search {
     margin-top: 5px;
 }
 #pad-wrapper {
-    padding: 0px 50px;
+    padding: 0px 0px;
     margin-top: 55px;
 }
 #pad-wrapper h4 {
@@ -79,14 +79,12 @@ input.search {
     font-style: italic;
 }
 .content {
-    min-width: 400px;
     min-height: 720px;
     margin-bottom: 100px;
     padding-bottom: 50px;
     overflow: hidden;
     position: relative;
     background: #fff;
-    margin-left: 177px;
     border-left: 1px solid #dae3e9;
     box-shadow: 2px -3px 4px -2px #f1f1f3;
     -webkit-transition: margin-left .3s ease;

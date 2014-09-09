@@ -344,4 +344,20 @@ table th span.line {
     .navbar-toggle {
         display: block !important;
     }
+    #pad-wrapper {
+        padding: 0 0!important;
+        margin-top: 0!important;
+    }
+    .container {
+        padding: 10px 0 88px;
+    }
+    .fix-height {
+        min-height: 200px!important;
+    }
+}
+
+@media (min-width: 1440px)  {
+    .container {
+        width: 1410px;
+    }
 }

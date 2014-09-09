@@ -93,7 +93,14 @@
     animation-delay: -0.16s
 }
 .view-header {
-    border-bottom: 4px solid #3e3e3e;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+    /*border-bottom: 4px solid #3e3e3e;*/
+}
+.visible-xs button{
+    margin: 10px 0;
+}
+.fix-height{
+    min-height: 620px;
+}
+.clear-padding {
+    padding: 0 0;
 }
