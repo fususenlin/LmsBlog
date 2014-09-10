@@ -21,11 +21,17 @@ class Article(models.Model):
     timestamp = models.DateTimeField()
     class Meta:
         ordering = ('-timestamp',)
-
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'timestamp')
 
-admin.site.register(Article,ArticleAdmin)
+class Link(models.Model):
+    href = models.CharField(max_length=150)
+    name = models.CharField(max_length=10)
+class LinkAdmin(admin.ModelAdmin):
+    list_display = ('href', 'name')
+
+admin.site.register(Article, ArticleAdmin)
+admin.site.register(Link, LinkAdmin)
 
 
 # Serializers define the API representation.
@@ -56,11 +62,21 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
         model = Article
         fields = ('title', 'body', 'timestamp', 'id', 'type')
 
-
-
 class ArticleViewSet(viewsets.ModelViewSet):
     """
     A simple ViewSet for viewing and editing accounts.
     """
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
+
+class LinkSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Link
+        fields = ('href', 'name')
+
+class LinkViewSet(viewsets.ModelViewSet):
+    """
+    A simple ViewSet for viewing and editing accounts.
+    """
+    queryset = Link.objects.all()
+    serializer_class = LinkSerializer

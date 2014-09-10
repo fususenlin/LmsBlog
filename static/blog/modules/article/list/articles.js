@@ -28,6 +28,13 @@ var ArticlesCtrl = function ($rootScope, $scope, $http,$location) {
                 $scope.articles = data;
             });
     }
+
+    $scope.refreshLinks = function() {
+        $http.get("/rest/links/").success(function(data) {
+                $scope.links = data;
+        });
+    }
+    $scope.refreshLinks();
     $scope.refreshArticles();
 };
 ArticlesCtrl.$inject = ['$rootScope', '$scope', '$http','$location'];

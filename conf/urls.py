@@ -17,6 +17,7 @@ router = routers.DefaultRouter()
 router.register(r'users', models.UserViewSet)
 router.register(r'articles', models.ArticlesViewSet)
 router.register(r'article', models.ArticleViewSet)
+router.register(r'links', models.LinkViewSet)
 
 
 urlpatterns = patterns('',

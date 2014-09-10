@@ -355,9 +355,3 @@ table th span.line {
         min-height: 200px!important;
     }
 }
-
-@media (min-width: 1440px)  {
-    .container {
-        width: 1410px;
-    }
-}
