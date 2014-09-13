@@ -3,7 +3,7 @@ $routeProvider.when("/articles", {
     controller: 'ArticlesCtrl',
     require:["http://tajs.qq.com/stats?sId=37077455"]
 });
-$routeProvider.when("/article", {
+$routeProvider.when("/articles/view", {
     resource: 'article/view/article',
     controller: 'ArticleCtrl',
     require: ["http://tajs.qq.com/stats?sId=37077455"]

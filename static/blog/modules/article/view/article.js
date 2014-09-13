@@ -6,7 +6,7 @@ var ArticleCtrl = function ($scope, $http, $location) {
             bootbox.alert("Confirm result: " + result);
         });
     };
-    $http.get("/rest/article/"+$scope.id).success(function(data) {
+    $http.get("/rest/articles/"+$scope.id).success(function(data) {
         $scope.article = data;
         $scope.article.body = window.marked($scope.article.body);
     });

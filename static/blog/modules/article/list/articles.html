@@ -8,7 +8,7 @@
 <div>
     <div class="col-md-9  clear-padding">
         <div class="panel panel-default">
-            <div class="panel-heading"><i class="fa fa-th-large fa-fw"></i>&nbsp; 文章列表</div>
+            <div class="panel-heading"><i class="fa fa-th-large fa-fw"></i>&nbsp; 文章列表 &nbsp; {{ tag }}</div>
             <div class="panel-body fix-height">
                 <div ng-hide="articles">
                     <nav class="posts-navigator thin-scroll">
@@ -35,7 +35,15 @@
                 </div>
             </div>
         </div>
-
+    </div>
+    <div class="col-xs-12 col-md-3 pull-right  clear-padding">
+        <div class="panel panel-default">
+            <div class="panel-heading">Tags</div>
+            <div class="panel-body">
+               <button type="button" class="mg2 btn btn-default" ng-click="index()">全部</button>
+               <button type="button" class="mg2 btn btn-default" ng-repeat="tag in tags" ng-click="search_tag(tag.name)">{{tag.name}}</button>
+            </div>
+        </div>
     </div>
     <div class="col-xs-12 col-md-3 pull-right  clear-padding">
         <div class="panel panel-default">
