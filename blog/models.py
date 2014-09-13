@@ -6,6 +6,7 @@ from rest_framework import serializers, viewsets
 from rest_framework.response import Response
 from rest_framework import filters
 from rest_framework import status
+from django.core.exceptions import ValidationError
 
 class Tag(models.Model):
     name = models.CharField(max_length=150)
@@ -98,8 +99,43 @@ class ArticleViewSet(viewsets.ModelViewSet):
     #def retrieve(self, request, pk=None):
     #    pass
 
-    #def update(self, request, pk=None):
-    #    pass
+    def update(self, request, *args, **kwargs):
+        partial = kwargs.pop('partial', False)
+        self.object = self.get_object_or_none()
+
+        serializer = self.get_serializer(self.object, data=request.DATA,
+                                         files=request.FILES, partial=partial)
+
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            self.pre_save(serializer.object)
+        except ValidationError as err:
+            # full_clean on model instance may be called in pre_save,
+            # so we have to handle eventual errors.
+            return Response(err.message_dict, status=status.HTTP_400_BAD_REQUEST)
+        print("dqwdqw")
+        if self.object is None:
+            self.object = serializer.save(force_insert=True)
+            tags_str = serializer.data['tag']
+            tags = tags_str.split(",")
+            for tag in tags:
+                in_tags = Tag.objects.filter(name=tag)
+                if len(in_tags) is 0:
+                    Tag.objects.create(name=tag)
+            self.post_save(self.object, created=True)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        self.object = serializer.save(force_update=True)
+        tags_str = serializer.data['tag']
+        tags = tags_str.split(",")
+        for tag in tags:
+            in_tags = Tag.objects.filter(name=tag)
+            if len(in_tags) is 0:
+                Tag.objects.create(name=tag)
+        self.post_save(self.object, created=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     #def partial_update(self, request, pk=None):
     #    pass
