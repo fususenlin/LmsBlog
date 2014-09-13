@@ -3,36 +3,38 @@ from django.contrib import admin
 from django.contrib import auth
 from django.contrib.auth.models import User
 from rest_framework import serializers, viewsets
-from rest_framework.permissions import BasePermission
+from rest_framework.response import Response
+from rest_framework import filters
+from rest_framework import status
 
-class SessionPermission(BasePermission):
+class Tag(models.Model):
+    name = models.CharField(max_length=150)
 
-    def has_permission(self, request, view):
-        user = auth.get_user(request)
-        if user.username is not "":
-            return True
-        return False
+class TagSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ('name', )
+
+class TagViewSet(viewsets.ModelViewSet):
+    """
+    A simple ViewSet for viewing and editing accounts.
+    """
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
 
 # Create your models here.
 class Article(models.Model):
     title = models.CharField(max_length=150)
-    type = models.IntegerField()
+    tag = models.CharField(max_length=20)
     body = models.TextField()
     timestamp = models.DateTimeField()
     class Meta:
         ordering = ('-timestamp',)
-class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'timestamp')
 
-class Link(models.Model):
-    href = models.CharField(max_length=150)
-    name = models.CharField(max_length=10)
-class LinkAdmin(admin.ModelAdmin):
-    list_display = ('href', 'name')
+class ArticleAdmin(admin.ModelAdmin):
+    list_display = ('title', 'tag', 'timestamp')
 
 admin.site.register(Article, ArticleAdmin)
-admin.site.register(Link, LinkAdmin)
-
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -45,22 +47,15 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-class ArticlesSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Article
-        fields = ('title', 'timestamp', 'id', 'type')
-
-class ArticlesViewSet(viewsets.ModelViewSet):
-    """
-    A simple ViewSet for viewing and editing accounts.
-    """
-    queryset = Article.objects.all()
-    serializer_class = ArticlesSerializer
-
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Article
-        fields = ('title', 'body', 'timestamp', 'id', 'type')
+        fields = ('title', 'body', 'timestamp', 'id', 'tag')
+
+class ArticleNoBodySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Article
+        fields = ('title', 'timestamp', 'id', 'tag')
 
 class ArticleViewSet(viewsets.ModelViewSet):
     """
@@ -69,6 +64,57 @@ class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 
+    def list(self, request, *args, **kwargs):
+        def get_queryset(self):
+            tag = self.request.QUERY_PARAMS.get('tag', None)
+            if tag is None:
+                articles = Article.objects.all()
+            else:
+                articles = Article.objects.filter(tag=tag)
+            print(articles)
+            return articles
+
+        queryset = get_queryset(self)
+        serializer = ArticleNoBodySerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.DATA, files=request.FILES)
+        if serializer.is_valid():
+            self.pre_save(serializer.object)
+            self.object = serializer.save(force_insert=True)
+            tags_str = serializer.data['tag']
+            tags = tags_str.split(",")
+            for tag in tags:
+                Tag.objects.create(name=tag)
+            self.post_save(self.object, created=True)
+            headers = self.get_success_headers(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED,
+                            headers=headers)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    #def retrieve(self, request, pk=None):
+    #    pass
+
+    #def update(self, request, pk=None):
+    #    pass
+
+    #def partial_update(self, request, pk=None):
+    #    pass
+
+    #def destroy(self, request, pk=None):
+    #    pass
+
+    #def get_queryset(self):
+        #return Article.objects.all()
+
+class Link(models.Model):
+    href = models.CharField(max_length=150)
+    name = models.CharField(max_length=10)
+class LinkAdmin(admin.ModelAdmin):
+    list_display = ('href', 'name')
+admin.site.register(Link, LinkAdmin)
 class LinkSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Link
