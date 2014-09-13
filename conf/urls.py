@@ -13,11 +13,11 @@ from rest_framework import generics
 admin.autodiscover()
 
 # Routers provide an easy way of automatically determining the URL conf.
-router = routers.DefaultRouter()
+router = routers.DefaultRouter(trailing_slash=True)
 router.register(r'users', models.UserViewSet)
-router.register(r'articles', models.ArticlesViewSet)
-router.register(r'article', models.ArticleViewSet)
+router.register(r'articles', models.ArticleViewSet)
 router.register(r'links', models.LinkViewSet)
+router.register(r'tags', models.TagViewSet)
 
 
 urlpatterns = patterns('',

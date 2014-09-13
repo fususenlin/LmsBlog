@@ -71,7 +71,6 @@ class ArticleViewSet(viewsets.ModelViewSet):
                 articles = Article.objects.all()
             else:
                 articles = Article.objects.filter(tag=tag)
-            print(articles)
             return articles
 
         queryset = get_queryset(self)
@@ -86,7 +85,9 @@ class ArticleViewSet(viewsets.ModelViewSet):
             tags_str = serializer.data['tag']
             tags = tags_str.split(",")
             for tag in tags:
-                Tag.objects.create(name=tag)
+                in_tags = Tag.objects.filter(name=tag)
+                if len(in_tags) is 0:
+                    Tag.objects.create(name=tag)
             self.post_save(self.object, created=True)
             headers = self.get_success_headers(serializer.data)
             return Response(serializer.data, status=status.HTTP_201_CREATED,
