@@ -71,7 +71,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
             if tag is None:
                 articles = Article.objects.all()
             else:
-                articles = Article.objects.filter(tag=tag)
+                articles = Article.objects.filter(tag__contains=tag)
             return articles
 
         queryset = get_queryset(self)
