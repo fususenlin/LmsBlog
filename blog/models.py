@@ -8,13 +8,23 @@ from rest_framework import filters
 from rest_framework import status
 from django.core.exceptions import ValidationError
 
+
 class Tag(models.Model):
     name = models.CharField(max_length=150)
+
+
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('name', )
+
+
+admin.site.register(Tag, TagAdmin)
+
 
 class TagSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Tag
         fields = ('name', )
+
 
 class TagViewSet(viewsets.ModelViewSet):
     """
@@ -23,17 +33,21 @@ class TagViewSet(viewsets.ModelViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 
+
 # Create your models here.
 class Article(models.Model):
     title = models.CharField(max_length=150)
     tag = models.CharField(max_length=20)
     body = models.TextField()
     timestamp = models.DateTimeField()
+
     class Meta:
         ordering = ('-timestamp',)
 
+
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'tag', 'timestamp')
+
 
 admin.site.register(Article, ArticleAdmin)
 
@@ -43,20 +57,24 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         model = User
         fields = ('url', 'username', 'email', 'is_staff')
 
+
 # ViewSets define the view behavior.
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Article
         fields = ('title', 'body', 'timestamp', 'id', 'tag')
 
+
 class ArticleNoBodySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Article
         fields = ('title', 'timestamp', 'id', 'tag')
+
 
 class ArticleViewSet(viewsets.ModelViewSet):
     """
@@ -96,7 +114,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    #def retrieve(self, request, pk=None):
+    # def retrieve(self, request, pk=None):
     #    pass
 
     def update(self, request, *args, **kwargs):
@@ -137,25 +155,33 @@ class ArticleViewSet(viewsets.ModelViewSet):
         self.post_save(self.object, created=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    #def partial_update(self, request, pk=None):
-    #    pass
+        #def partial_update(self, request, pk=None):
+        #    pass
 
-    #def destroy(self, request, pk=None):
-    #    pass
+        #def destroy(self, request, pk=None):
+        #    pass
 
-    #def get_queryset(self):
+        #def get_queryset(self):
         #return Article.objects.all()
+
 
 class Link(models.Model):
     href = models.CharField(max_length=150)
     name = models.CharField(max_length=10)
+
+
 class LinkAdmin(admin.ModelAdmin):
     list_display = ('href', 'name')
+
+
 admin.site.register(Link, LinkAdmin)
+
+
 class LinkSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Link
         fields = ('href', 'name')
+
 
 class LinkViewSet(viewsets.ModelViewSet):
     """
