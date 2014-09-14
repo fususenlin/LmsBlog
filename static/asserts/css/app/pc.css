@@ -1,3 +1,25 @@
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #a6a6a6;
+    border-left: 2px solid transparent;
+}
+::-webkit-scrollbar-track {
+    background-color: #d9d9d9;
+    border-left: 2px solid transparent;
+}
+html,body{
+    height: 100%;
+    overflow-y: hidden;
+}
+body {
+  /*background: url(../../img/heading2.png);*/
+}
+.main {
+    height: 100%;
+    overflow-y: scroll;
+}
 .login-pc {
     position: fixed;
     height: 100%;
@@ -106,4 +128,12 @@
 }
 .mg2 {
     margin: 2px;
+}
+
+.article-list .thumbnail {
+    margin-bottom: 0;
+}
+.article-list .thumbnail {
+    border-bottom: 0;
+    border-radius: 0;
 }

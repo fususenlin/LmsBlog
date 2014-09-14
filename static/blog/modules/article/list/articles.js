@@ -1,5 +1,6 @@
 var ArticlesCtrl = function ($rootScope, $scope, $http,$location) {
 
+    $scope.tag = "全部";
     $scope.view = function(article) {
         $location.url("/articles/view?id="+article.id);
     };
@@ -12,7 +13,7 @@ var ArticlesCtrl = function ($rootScope, $scope, $http,$location) {
         });
     };
     $scope.index = function() {
-        $scope.tag = "";
+        $scope.tag = "全部";
         $scope.refreshArticles();
     };
     $scope.search_tag = function(tag) {
@@ -23,7 +24,7 @@ var ArticlesCtrl = function ($rootScope, $scope, $http,$location) {
     $scope.refreshArticles = function() {
         var url = "/rest/articles/";
         var tag = $scope.tag;
-        if(tag) {
+        if(tag!="全部") {
             url += "?tag=" + tag;
         }
         $http.get(url).success(function(data) {
