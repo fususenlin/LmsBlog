@@ -22,10 +22,11 @@
                         </ul>
                     </nav>
                 </div>
+
                 <div class="row article-list">
-                    <div class="col-xs-12 col-md-12" ng-repeat="article in articles">
-                        <div class="thumbnail pointer" ng-click="view(article)">
-                            <div class="caption">
+                    <div class="col-xs-12 col-md-12" >
+                        <ul class="list-group">
+                            <li class="list-group-item pointer" ng-repeat="article in articles" ng-click="view(article)">
                                 <h3>{{article.title}}</h3>
                                 <p></p>
                                 <p>
@@ -34,10 +35,9 @@
                                     &nbsp; &nbsp;
                                     <i class="fa fa-tag fa-fw"></i>
                                     {{article.tag}}
-
                                 </p>
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -47,8 +47,8 @@
         <div class="panel panel-default">
             <div class="panel-heading">Tags</div>
             <div class="panel-body">
-               <button type="button" class="mg2 btn btn-default" ng-click="index()">全部</button>
-               <button type="button" class="mg2 btn btn-default" ng-repeat="tag in tags" ng-click="search_tag(tag.name)">{{tag.name}}</button>
+                <button type="button" class="mg2 btn btn-default" ng-click="index()">全部</button>
+                <button type="button" class="mg2 btn btn-default" ng-repeat="tag in tags" ng-click="search_tag(tag.name)">{{tag.name}}</button>
             </div>
         </div>
     </div>

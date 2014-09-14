@@ -14,7 +14,7 @@ html,body{
     overflow-y: hidden;
 }
 body {
-  /*background: url(../../img/heading2.png);*/
+    /*background: url(../../img/heading2.png);*/
 }
 .main {
     height: 100%;
@@ -134,6 +134,12 @@ body {
     margin-bottom: 0;
 }
 .article-list .thumbnail {
-    border-bottom: 0;
+    border-bottom: 0!important;
     border-radius: 0;
+}
+.article-list .thumbnail:last-child{
+    border-bottom:1px solid #ddd!important;
+}
+.list-group-item:hover{
+    background-color: #FAFAFA;
 }
