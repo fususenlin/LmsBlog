@@ -1,5 +1,8 @@
 var ArticlesCtrl = function ($rootScope, $scope, $http,$location) {
 
+    $scope.$$postDigest(function(){
+        toggleDuoshuoComments("#comment-box", "at-base", "http://limaoshengcpp.cn", "复苏森林");
+    });
     $scope.tag = "全部";
     $scope.view = function(article) {
         $location.url("/articles/view?id="+article.id);

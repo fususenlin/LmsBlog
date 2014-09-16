@@ -6,7 +6,7 @@
 </head>
 
 <div>
-    <div class="col-md-9  clear-padding">
+    <div class="col-md-8  clear-padding">
         <div class="panel panel-default">
             <div class="panel-heading"><i class="fa fa-th-large fa-fw"></i>&nbsp; 文章列表 &nbsp;  <i class="fa fa-tag fa-fw"></i>{{ tag }}</div>
             <div class="panel-body fix-height">
@@ -43,7 +43,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-12 col-md-3 pull-right  clear-padding">
+    <div class="col-xs-12 col-md-4 pull-right  clear-padding">
         <div class="panel panel-default">
             <div class="panel-heading">Tags</div>
             <div class="panel-body">
@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-12 col-md-3 pull-right  clear-padding">
+    <div class="col-xs-12 col-md-4 pull-right  clear-padding">
         <div class="panel panel-default">
             <div class="panel-heading">友情链接</div>
             <div class="panel-body">
@@ -61,6 +61,14 @@
                 <p><a href="http://www.qiaokaka.com/" target="_blank">乔卡卡的飞仙阁</a></p>
                 <p><a href="http://www.angularjs.cn/" target="_blank">AngularJs中文站</a></p>
                 <p ng-repeat="link in links"><a href="{{link.href}}" target="_blank">{{ link.name }}</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-4 pull-right  clear-padding">
+        <div class="panel panel-default">
+            <div class="panel-heading">多说评论</div>
+            <div class="panel-body">
+                <div id="comment-box" ></div>
             </div>
         </div>
     </div>

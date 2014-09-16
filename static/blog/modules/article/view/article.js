@@ -9,6 +9,9 @@ var ArticleCtrl = function ($scope, $http, $location) {
     $http.get("/rest/articles/"+$scope.id).success(function(data) {
         $scope.article = data;
         $scope.article.body = window.marked($scope.article.body);
+        $scope.$$postDigest(function(){
+            toggleDuoshuoComments("#comment-article", "at-"+$scope.id, "http://limaoshengcpp.cn/#/articles?id="+$scope.id, $scope.article.title);
+        });
     });
     $scope.goback = function() {
         $location.path("/articles");
