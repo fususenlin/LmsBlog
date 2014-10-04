@@ -12,6 +12,12 @@ def admin(request):
     c = Context()
     return HttpResponse(t.render(c))
 
+def love(request):
+    #posts = BlogPost.objects.all()
+    t = loader.get_template("love.html")
+    c = Context()
+    return HttpResponse(t.render(c))
+
 def blog(request):
     #posts = BlogPost.objects.all()
     t = loader.get_template("blog.html")
